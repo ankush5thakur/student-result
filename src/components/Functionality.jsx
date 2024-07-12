@@ -14,8 +14,8 @@ const Functionality = ({ onSearch, onFilterBranch, onFilterBatch, onSort }) => {
   };
 
   return (
-    <div className="w-full md:max-w-6xl md:mx-auto flex flex-col md:flex-row md:py-2 md:items-center justify-center items-center my-3 py-1 px-1 gap-1 md:gap-2">
-      <div className="w-full flex flex-row gap-2 justify-center items-center search-input rounded px-3 pt-1 md:w-2/6">
+    <div className="w-full md:pt-4 md:max-w-6xl md:mx-auto flex flex-col md:flex-row md:py-2 md:items-center justify-center items-center  py-3 px-1 gap-1 md:gap-2">
+      <div className="w-full flex flex-row gap-2 justify-center items-center search-input rounded px-3  md:w-2/6">
         <input
           type="text"
           placeholder="Search by name or roll number"
@@ -35,7 +35,7 @@ const Functionality = ({ onSearch, onFilterBranch, onFilterBatch, onSort }) => {
       >
         <select
           onChange={(e) => onFilterBranch(e.target.value)}
-          className="w-full md:w-auto text-center text-nowrap rounded px-3 py-1 branch-select"
+          className="w-full md:w-full text-center text-nowrap rounded px-3 py-1 branch-select"
         >
           <option>All Branches</option>
           <option>Computer Science</option>
@@ -52,7 +52,7 @@ const Functionality = ({ onSearch, onFilterBranch, onFilterBatch, onSort }) => {
         </select>
         <select
           onChange={(e) => onFilterBatch(e.target.value)}
-          className="w-full md:w-auto text-center text-nowrap rounded px-3 py-1 batch-select"
+          className="w-full md:w-full text-center text-nowrap rounded px-3 py-1 batch-select"
         >
           <option value="">All Batches</option>
           <option value="2027">2027</option>
@@ -65,7 +65,7 @@ const Functionality = ({ onSearch, onFilterBranch, onFilterBatch, onSort }) => {
         </select>
         <select
           onChange={(e) => onSort(e.target.value)}
-          className="w-full md:w-auto text-center text-nowrap rounded px-3 py-1 sort-select"
+          className="w-full md:w-full text-center text-nowrap rounded px-3 py-1 sort-select"
         >
           <option value="cgpi-asc">Sort by CGPI (Low to High)</option>
           <option value="cgpi-desc">Sort by CGPI (High to Low)</option>
