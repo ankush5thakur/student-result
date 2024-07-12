@@ -1,0 +1,202 @@
+[
+  {
+    "RollNo": "194501",
+    "Branch": "ECE_Dual",
+    "Batch": 2019,
+    "Name": "VANDIT SHARMA",
+    "semesters": [
+      {
+        "sgpi": "7.79",
+        "cgpi": "7.79",
+        "subjects": [
+          { "name": "ENGINEERING MATHEMATICS-I", "code": "MA-111", "cgpi": 9 },
+          {
+            "name": "BASIC ELECTRICAL ENGINEERING",
+            "code": "EE-101",
+            "cgpi": 4
+          },
+          {
+            "name": "BASIC ELECTRICAL ENGINEERING LAB",
+            "code": "EE-102",
+            "cgpi": 9
+          },
+          { "name": "ENGINEERING CHEMISTRY LAB", "code": "CY-102", "cgpi": 8 },
+          { "name": "ENGINEERING CHEMISTRY", "code": "CY-101", "cgpi": 9 },
+          { "name": "ENGINEERING WORKSHOP", "code": "ME-102", "cgpi": 8 },
+          {
+            "name": "MATERIAL SCIENCE &amp;ENGINEERING",
+            "code": "MS-101",
+            "cgpi": 7
+          },
+          { "name": "COMMUNICATION SKILLS", "code": "HS-101", "cgpi": 9 },
+          { "name": "COMMUNICATION SKILLS LAB", "code": "HS-102", "cgpi": 10 }
+        ],
+        "semester": "01",
+        "sgpi_total": "187",
+        "cgpi_total": "187"
+      },
+      {
+        "sgpi": "8.46",
+        "cgpi": "8.12",
+        "subjects": [
+          { "name": "APPLIED MECHANICS", "code": "CE-101", "cgpi": 8 },
+          { "name": "ENGINEERING MATHEMATICS-II", "code": "MA-121", "cgpi": 9 },
+          { "name": "COMPUTER PROGRAMMING LAB", "code": "CS-102", "cgpi": 9 },
+          {
+            "name": "BASIC ELECTRONICS ENGINEERING",
+            "code": "EC-101",
+            "cgpi": 8
+          },
+          {
+            "name": "ELECTRONICS ENGINEERING LAB",
+            "code": "EC-102",
+            "cgpi": 8
+          },
+          { "name": "ENGINEERING GRAPHICS", "code": "ME-101", "cgpi": 8 },
+          { "name": "COMPUTER PROGRAMMING", "code": "CS-101", "cgpi": 8 },
+          { "name": "ENGINEERING PHYSICS", "code": "PH-101", "cgpi": 9 },
+          { "name": "ENGINEERING PHYSICS LAB", "code": "PH-102", "cgpi": 10 }
+        ],
+        "semester": "02",
+        "sgpi_total": "203",
+        "cgpi_total": "390"
+      },
+      {
+        "sgpi": "9.64",
+        "cgpi": "8.6",
+        "subjects": [
+          { "name": "ANALOG ELECTRONICS", "code": "EC-212", "cgpi": 10 },
+          {
+            "name": "DIGITAL ELECTRONICS AND LOGIC DESIGN LAB",
+            "code": "EC-214",
+            "cgpi": 10
+          },
+          { "name": "DATA STRUCTURES LAB", "code": "CS-202", "cgpi": 10 },
+          {
+            "name": "DIGITAL ELECTRONICS AND LOGIC DESIGN",
+            "code": "EC-211",
+            "cgpi": 10
+          },
+          { "name": "ANALOG ELECTRONICS", "code": "EC-215", "cgpi": 9 },
+          { "name": "ORGANIZATIONAL BEHAVIOUR", "code": "HS-203", "cgpi": 9 },
+          { "name": "DATA STRUCTURES", "code": "CS-201", "cgpi": 9 },
+          { "name": "COMMUNICATION THEORY", "code": "EC-213", "cgpi": 10 }
+        ],
+        "semester": "03",
+        "sgpi_total": "212",
+        "cgpi_total": "602"
+      },
+      {
+        "sgpi": "9.32",
+        "cgpi": "8.77",
+        "subjects": [
+          {
+            "name": "ENGINEERING MATHEMATICS-III",
+            "code": "MA-203",
+            "cgpi": 9
+          },
+          { "name": "LINEAR INTEGRATED CIRCUITS", "code": "EC-221", "cgpi": 8 },
+          { "name": "VLSI TECHNOLOGY", "code": "EC-224", "cgpi": 10 },
+          {
+            "name": "ANALOG COMMUNICATION SYSTEMS",
+            "code": "EC-222",
+            "cgpi": 10
+          },
+          {
+            "name": "LINEAR INTEGRATED CIRCUITS LAB",
+            "code": "EC-225",
+            "cgpi": 10
+          },
+          { "name": "ANALOG COMMUNICATION LAB", "code": "EC-226", "cgpi": 9 },
+          {
+            "name": "ELECTROMAGNETIC FIELD  THEORY",
+            "code": "EC-223",
+            "cgpi": 10
+          },
+          {
+            "name": "CIRCUIT DESIGN &amp; SIMULATION LAB",
+            "code": "EC-227",
+            "cgpi": 8
+          }
+        ],
+        "semester": "04",
+        "sgpi_total": "205",
+        "cgpi_total": "807"
+      },
+      {
+        "sgpi": "7.43",
+        "cgpi": "8.52",
+        "subjects": [
+          {
+            "name": "MICROWAVE DEVICES &amp; SYSTEMS LAB",
+            "code": "EC-316",
+            "cgpi": 9
+          },
+          {
+            "name": "MATHEMATICS &amp; SCIENTIFIC COMPUTING",
+            "code": "MA-371",
+            "cgpi": 7
+          },
+          {
+            "name": "DIGITAL COMMUNICATION &amp; SYSTEMS",
+            "code": "EC-312",
+            "cgpi": 7
+          },
+          { "name": "DIGITAL COMMUNICATION LAB", "code": "EC-315", "cgpi": 10 },
+          { "name": "DIGITAL SIGNAL PROCESSING", "code": "EC-313", "cgpi": 5 },
+          {
+            "name": "DIGITAL SIGNAL PROCESSING LAB",
+            "code": "EC-317",
+            "cgpi": 9
+          },
+          {
+            "name": "MICROWAVE DEVICES &amp; SYSTEMS",
+            "code": "EC-314",
+            "cgpi": 9
+          },
+          {
+            "name": "MICROPROCESSOR ARCHITECTURE AND APPLICATIONS",
+            "code": "EC-311",
+            "cgpi": 8
+          }
+        ],
+        "semester": "05",
+        "sgpi_total": "156",
+        "cgpi_total": "963"
+      },
+      {
+        "sgpi": "7.33",
+        "cgpi": "8.34",
+        "subjects": [
+          {
+            "name": "ECONOMICS OF INDUSTRIAL ORGANIZATION",
+            "code": "HS-307",
+            "cgpi": 5
+          },
+          { "name": "VLSI DESIGN LAB", "code": "EC-326", "cgpi": 9 },
+          { "name": "SEMINAR", "code": "EC-329", "cgpi": 10 },
+          { "name": "VLSI DESIGN TECHNIQUES", "code": "EC-323", "cgpi": 6 },
+          {
+            "name": "ANTENNA AND WAVE PROPAGATION",
+            "code": "EC-324",
+            "cgpi": 7
+          },
+          { "name": "WIRELESS COMMUNICATION", "code": "EC-322", "cgpi": 9 },
+          {
+            "name": "MICROPROCESSOR AND MICROCONTROLLER LAB",
+            "code": "EC-325",
+            "cgpi": 7
+          },
+          {
+            "name": "MICROCONTROLLER AND EMBEDDED SYSTEMS",
+            "code": "EC-321",
+            "cgpi": 8
+          }
+        ],
+        "semester": "06",
+        "sgpi_total": "154",
+        "cgpi_total": "1117"
+      }
+    ]
+  }
+]
