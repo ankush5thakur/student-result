@@ -37,7 +37,7 @@ const Functionality = ({ onSearch, onFilterBranch, onFilterBatch, onSort }) => {
           onChange={(e) => onFilterBranch(e.target.value)}
           className="w-full md:w-full text-center text-nowrap rounded px-3 py-1 branch-select"
         >
-          <option>All Branches</option>
+          <option value = "">All Branches</option>
           <option>Computer Science</option>
           <option>Electronics</option>
           <option>Electrical</option>
