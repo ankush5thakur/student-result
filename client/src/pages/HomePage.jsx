@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Card from '../components/Card';
 import Functionality from '../components/Functionality';
@@ -26,6 +26,8 @@ const HomePage = () => {
   });
 
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const firstLoadRef = useRef(true);
+  const inFlightRef = useRef(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -34,73 +36,100 @@ const HomePage = () => {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  const fetchStudents = useCallback(
-    async (
-      currentPage = pagination.currentPage,
-      resultsPerPage = pagination.resultsPerPage,
-      search = debouncedSearchTerm,
-      branch = branchFilter,
-      batch = batchFilter,
-      sort = sortOption
-    ) => {
-      try {
-        if (students.length === 0) {
-          setIsLoading(true);
-        } else {
-          setIsSearching(true);
-        }
-        setError('');
+  // Unified data fetch effect – fires on relevant dependency changes
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      // Prevent overlapping requests
+      if (inFlightRef.current) return;
+      inFlightRef.current = true;
 
-        const response = await axios.get(
+      const isInitial = firstLoadRef.current;
+      if (isInitial) {
+        setIsLoading(true);
+      } else {
+        setIsSearching(true);
+      }
+      setError('');
+      try {
+        const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/students`,
           {
             params: {
-              page: currentPage,
-              limit: resultsPerPage,
-              search: search,
-              branch: branch,
-              batch: batch,
-              sortBy: sort,
+              page: pagination.currentPage,
+              limit: pagination.resultsPerPage,
+              search: debouncedSearchTerm,
+              branch: branchFilter,
+              batch: batchFilter,
+              sortBy: sortOption,
             },
           }
         );
 
-        setStudents(response.data.students);
-        setPagination(response.data.pagination);
+        if (cancelled) return;
+
+        setStudents(data.students || []);
+
+        // Merge pagination safely (backend key fallbacks handled)
+        const p = data.pagination || {};
+        setPagination((prev) => {
+          const currentPage = p.currentPage ?? p.page ?? prev.currentPage;
+          const totalPages = p.totalPages ?? p.pages ?? prev.totalPages;
+          const totalResults =
+            p.totalResults ??
+            p.total ??
+            prev.totalResults ??
+            (data.students ? data.students.length : 0);
+          const resultsPerPage =
+            p.resultsPerPage ?? p.limit ?? prev.resultsPerPage;
+          return {
+            ...prev,
+            currentPage,
+            totalPages,
+            totalResults,
+            resultsPerPage,
+            hasNextPage:
+              p.hasNextPage !== undefined
+                ? p.hasNextPage
+                : currentPage < totalPages,
+            hasPrevPage:
+              p.hasPrevPage !== undefined ? p.hasPrevPage : currentPage > 1,
+          };
+        });
       } catch (err) {
-        console.error('Failed to fetch students:', err);
-        setError('Failed to load student data. Please try again later.');
+        if (!cancelled) {
+          console.error('Failed to fetch students:', err);
+          setError('Failed to load student data. Please try again later.');
+        }
       } finally {
-        setIsLoading(false);
-        setIsSearching(false);
+        if (!cancelled) {
+          setIsLoading(false);
+          setIsSearching(false);
+          firstLoadRef.current = false;
+        }
+        inFlightRef.current = false;
       }
-    },
-    [
-      students.length,
-      pagination.currentPage,
-      pagination.resultsPerPage,
-      debouncedSearchTerm,
-      branchFilter,
-      batchFilter,
-      sortOption,
-    ]
-  );
-
-  useEffect(() => {
-    fetchStudents();
-  }, [fetchStudents]);
-
-  useEffect(() => {
-    if (pagination.currentPage !== 1) {
-      setPagination((prev) => ({ ...prev, currentPage: 1 }));
-    }
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
   }, [
+    pagination.currentPage,
+    pagination.resultsPerPage,
     debouncedSearchTerm,
     branchFilter,
     batchFilter,
     sortOption,
-    pagination.currentPage,
   ]);
+
+  // Reset to first page when query-driving inputs change
+  useEffect(() => {
+    setPagination((prev) => {
+      if (prev.currentPage === 1) return prev;
+      return { ...prev, currentPage: 1 };
+    });
+  }, [debouncedSearchTerm, branchFilter, batchFilter, sortOption]);
 
   const handleSearch = (term) => setSearchTerm(term);
   const handleFilterBranch = (branch) => setBranchFilter(branch);
@@ -108,11 +137,12 @@ const HomePage = () => {
   const handleSort = (sort) => setSortOption(sort);
 
   const handlePageChange = (newPage) => {
-    setIsSearching(true);
+    if (newPage === pagination.currentPage || newPage < 1) return;
     setPagination((prev) => ({ ...prev, currentPage: newPage }));
   };
 
   const handleLimitChange = (newLimit) => {
+    if (newLimit === pagination.resultsPerPage) return;
     setPagination((prev) => ({
       ...prev,
       resultsPerPage: newLimit,
